@@ -1,0 +1,49 @@
+<div class="container py-5 mb-5">
+
+  <div class="row">
+    <div class="col-md-4 mb-5">
+      <div class="card h-100 text-center">
+        <div style="text-align:center">
+          <fa-icon size="7x" [icon]="faUsers"></fa-icon>
+        </div>
+        <div class="card-body text">
+          <h4 class="card-title">Family Members</h4>
+          <p class="card-text">View and maintain family member accounts</p>
+        </div>
+        <div class="card-footer">
+          <a routerLink="/family" class="btn btn-primary">View Family</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-5">
+      <div class="card h-100 text-center">
+        <div style="text-align:center">
+          <fa-icon size="7x" [icon]="faClipboardList"></fa-icon>
+        </div>
+        <div class="card-body">
+          <h4 class="card-title">View Chores</h4>
+          <p class="card-text">Parents can view Chores assigned to each family member. Kids each get their own login to view their own personalized list of chores</p>
+        </div>
+        <div class="card-footer">
+          <a routerLinkActive="active" routerLink="/chores" class="btn btn-primary">View Chores</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-5">
+      <div class="card h-100 text-center">
+        <div style="text-align:center">
+          <fa-icon size="7x" [icon]="faMoneyBillAlt"></fa-icon>
+        </div>
+        <div class="card-body">
+          <h4 class="card-title">Rewards</h4>
+          <p class="card-text">Parents can create and assign rewards for each child to keep them motivated</p>
+        </div>
+        <div class="card-footer">
+          <a routerLinkActive="active" routerLink="/rewards" class="btn btn-primary">View Rewards</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /.row -->
+
+</div>

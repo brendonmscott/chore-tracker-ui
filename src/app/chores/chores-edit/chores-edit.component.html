@@ -1,0 +1,35 @@
+<div class="chore-container py-5 mb-5" *ngIf="chore">
+  <div class="chore-form">
+    <form [formGroup]="choreForm">
+      <div class="form-group">
+        <input type="text" class="form-control" id="name" placeholder="Name" formControlName="name">
+        <span *ngIf="choreForm.get('name').touched && choreForm.get('name').hasError('required')">
+          Name is required
+        </span>
+      </div>
+
+      <div class="form-group">
+        <input type="text" class="form-control" id="description" placeholder="Description" formControlName="description">
+        <span *ngIf="choreForm.get('description').touched && choreForm.get('description').hasError('required')">
+          Description is required
+        </span>
+      </div>
+
+      <div class="action-group">
+        <div class="back-link">
+          <a [routerLink]="['/chores']">Back</a>
+        </div>
+        <div class="action">
+          <button type="submit" class="btn btn-primary" [disabled]="!choreForm.valid" (click)="onSave()">Save</button>
+          <button class="btn btn-danger" (click)="deleteChore()">Delete</button>
+        </div>
+      </div>
+
+    </form>
+    <div style="margin-top: 10px;">
+      <pre>Form Valid? {{choreForm.valid | json}} <br/>{{choreForm.value | json}}
+        <br/>{{choreForm.status | json}}</pre>
+    </div>
+  </div>
+
+</div>

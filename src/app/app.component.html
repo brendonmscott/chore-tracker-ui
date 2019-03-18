@@ -1,21 +1,70 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a *ngIf="!authService.authenticated" class="navbar-brand" routerLink="home">Home</a>
+    <a *ngIf="authService.authenticated" class="navbar-brand" routerLink="home-logged-in">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="family" *ngIf="authService.authenticated">Family</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="chores" *ngIf="authService.authenticated">Chores</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="rewards" *ngIf="authService.authenticated">Rewards</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="login" *ngIf="!authService.authenticated">Login</a>
+        </li>
+        <li>
+          <div class="text-white nav-link" *ngIf="authService.authenticated && authService.currentUser">Hello, {{authService.currentUser.email}}</div>
+        </li>
+        <li>
+          <a class="text-blue nav-link" routerLink="home" (click)="authService.logout()" *ngIf="authService.authenticated">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!--<div class="user">-->
+    <!--<div class="text-white" *ngIf="authService.authenticated && authService.currentUser">Hello, {{authService.currentUser.name}}-->
+      <!--<a class="text-blue nav-link" routerLink="home" (click)="authService.logout()" *ngIf="authService.authenticated">Logout</a></div>-->
+  <!--</div>-->
+</nav>
 
-<router-outlet></router-outlet>
+<!--<header class="bg-primary py-5 mb-5">-->
+  <!--<div class="container h-100">-->
+    <!--<div class="row h-100 align-items-center">-->
+      <!--<div class="col-lg-12">-->
+        <!--<h1 class="display-4 text-white mt-5 mb-2">Business Name or Tagline</h1>-->
+        <!--<p class="lead mb-5 text-white-50">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non possimus ab labore provident mollitia. Id assumenda voluptate earum corporis facere quibusdam quisquam iste ipsa cumque unde nisi, totam quas ipsam.</p>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</header>-->
+
+<main>
+  <!--<nav>-->
+    <!--<ul>-->
+      <!--<li>-->
+        <!--<a routerLinkActive="active" routerLink="home">Dashboard</a>-->
+      <!--</li>-->
+      <!--<li>-->
+        <!--<a routerLinkActive="active" routerLink="chores">Chores</a>-->
+      <!--</li>-->
+    <!--</ul>-->
+  <!--</nav>-->
+
+  <article>
+    <router-outlet></router-outlet>
+  </article>
+</main>
+
+<footer class="py-5 bg-dark">
+  <app-footer></app-footer>
+</footer>

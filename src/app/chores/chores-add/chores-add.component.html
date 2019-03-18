@@ -1,0 +1,35 @@
+<div class="container py-5 mb-5">
+  <form [formGroup]="choreForm" (ngSubmit)="onSave()">
+    <div class="form-group">
+      <input type="text" formControlName="name" class="form-control" placeholder="Name"
+             [ngClass]="{ 'is-invalid': submitted && name.errors }"/>
+      <div *ngIf="submitted && name.errors" class="invalid-feedback">
+        <div *ngIf="name.hasError('required')">Name is required</div>
+        <div *ngIf="name.hasError('minlength')">Name must be at least 2 characters</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <input type="text" class="form-control" id="description" placeholder="Description" formControlName="description"
+             [ngClass]="{ 'is-invalid': submitted && description.errors }">
+      <div *ngIf="submitted && description.errors" class="invalid-feedback">
+        <div *ngIf="description.hasError('required')">Description is required</div>
+      </div>
+    </div>
+
+    <div class="action-group">
+      <div class="back-link">
+        <a [routerLink]="['/chores']">Back</a>
+      </div>
+      <div class="action">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-default" (click)="reset()">Reset</button>
+      </div>
+    </div>
+  </form>
+
+  <div style="margin-top: 10px;">
+  <pre>Form Valid? {{choreForm.valid | json}} <br/>{{choreForm.value | json}}
+    <br/>{{choreForm.status | json}}</pre>
+  </div>
+</div>
