@@ -5,6 +5,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { Credential } from '../domain/credential';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { SignupRequest } from '../domain/signupRequest';
 
 @Injectable()
 export class AuthService {
@@ -44,6 +45,23 @@ export class AuthService {
       },
       error => {
         console.log('login failed', error);
+      });
+  }
+
+  public register(signupRequest: SignupRequest) {
+    const url = `${this.BASE_URL}/auth/signup`;
+
+    return this.http.post(url, signupRequest,
+      { observe: 'response' }
+    ).subscribe(
+      response => {
+
+        if (response.status === 201) {
+          this.login(signupRequest.credentials);
+        }
+      },
+      error => {
+        console.log('registration failed', error);
       });
   }
 

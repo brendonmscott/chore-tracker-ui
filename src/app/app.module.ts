@@ -17,6 +17,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HomeModule } from './home/home.module';
 import { FamilyModule } from './family/family.module';
 import { HttpConfigInterceptor } from './interceptor/httpconfig.interceptor';
+import { RegisterComponent } from './register/register.component';
 
 export function tokenGetterFn() {
   return localStorage.getItem('token');
@@ -26,7 +27,8 @@ export function tokenGetterFn() {
   declarations: [
     AppComponent,
     FooterComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

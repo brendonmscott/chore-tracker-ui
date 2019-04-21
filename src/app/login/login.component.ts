@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Credential } from '../domain/credential';
 import { AuthService } from '../shared/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
 
 @Component({
   selector: 'app-login',
@@ -10,6 +11,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
+  faCheck = faCheck;
 
   constructor(private authService: AuthService, private fb: FormBuilder) { }
 

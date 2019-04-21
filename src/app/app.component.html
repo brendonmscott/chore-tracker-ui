@@ -20,7 +20,7 @@
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" routerLink="login" *ngIf="!authService.authenticated">Login</a>
+          <a class="nav-link" routerLinkActive="active" routerLink="login" *ngIf="!authService.authenticated">Login/Sign Up</a>
         </li>
         <li>
           <div class="text-white nav-link" *ngIf="authService.authenticated && authService.currentUser">Hello, {{authService.currentUser.email}}</div>
