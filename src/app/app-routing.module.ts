@@ -8,7 +8,9 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuardService } from './shared/auth-guard.service';
 import { HomeLoggedInComponent } from './home/home-logged-in/home-logged-in.component';
 import { FamilyListComponent } from './family/family-list/family-list.component';
+import { FamilyAddComponent } from './family/family-add/family-add.component';
 import { RegisterComponent } from './register/register.component';
+import { FamilyEditComponent } from './family/family-edit/family-edit.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -18,6 +20,8 @@ const routes: Routes = [
   { path: 'chores/create', component: ChoresAddComponent, canActivate: [ AuthGuardService ] },
   { path: 'chores/:id', component: ChoresEditComponent, canActivate: [ AuthGuardService ] },
   { path: 'family', component: FamilyListComponent, canActivate: [ AuthGuardService ] },
+  { path: 'family/add', component: FamilyAddComponent, canActivate: [ AuthGuardService ] },
+  { path: 'family/edit/:id', component: FamilyEditComponent, canActivate: [ AuthGuardService ] },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent }
 ];

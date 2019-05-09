@@ -1,0 +1,55 @@
+<div class="chore-container py-5 mb-5" *ngIf="familyMember">
+  <div class="chore-form">
+    <form [formGroup]="familyMemberForm">
+      <div class="form-group">
+        <input type="text" class="form-control" id="userName" placeholder="Username" formControlName="username">
+        <div *ngIf="submitted && username.errors" class="invalid-feedback">
+          <div *ngIf="username.hasError('required')">Username is required</div>
+          <div *ngIf="username.hasError('minlength')">Username must be at least 2 characters</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input type="text" formControlName="firstName" class="form-control" placeholder="First Name"
+               [ngClass]="{ 'is-invalid': submitted && firstName.errors }"/>
+        <div *ngIf="submitted && firstName.errors" class="invalid-feedback">
+          <div *ngIf="firstName.hasError('required')">First Name is required</div>
+          <div *ngIf="firstName.hasError('minlength')">First Name must be at least 2 characters</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input type="text" formControlName="lastName" class="form-control" placeholder="Last Name"
+               [ngClass]="{ 'is-invalid': submitted && lastName.errors }"/>
+        <div *ngIf="submitted && lastName.errors" class="invalid-feedback">
+          <div *ngIf="lastName.hasError('required')">Last Name is required</div>
+          <div *ngIf="lastName.hasError('minlength')">Last Name must be at least 2 characters</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input type="text" formControlName="birthDate" class="form-control" placeholder="Birthday"
+               [ngClass]="{ 'is-invalid': submitted && birthDate.errors }"/>
+        <div *ngIf="submitted && birthDate.errors" class="invalid-feedback">
+          <div *ngIf="birthDate.hasError('required')">Birthday is required</div>
+        </div>
+      </div>
+
+      <div class="action-group">
+        <div class="back-link">
+          <a [routerLink]="['/family']">Back</a>
+        </div>
+        <div class="action">
+          <button type="submit" class="btn btn-primary" [disabled]="!familyMemberForm.valid" (click)="onSave()">Save</button>
+          <button class="btn btn-danger" (click)="removeFamilyMember()">Delete</button>
+        </div>
+      </div>
+
+    </form>
+    <div style="margin-top: 10px;">
+      <pre>Form Valid? {{familyMemberForm.valid | json}} <br/>{{familyMemberForm.value | json}}
+        <br/>{{familyMemberForm.status | json}}</pre>
+    </div>
+  </div>
+
+</div>

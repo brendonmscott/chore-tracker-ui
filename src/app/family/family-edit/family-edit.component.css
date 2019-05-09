@@ -1,0 +1,8 @@
+.family-member-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.family-member-form {
+  flex: 3;
+}

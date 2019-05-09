@@ -1,19 +1,18 @@
 <div class="container py-5 mb-5">
 
-  <!--<div class="row">-->
+  <div class="row card-deck">
     <div *ngFor="let familyMember of familyMembers$">
-      <div class="col-md-3 mb-4">
-        <div class="card h-100 text-center">
-          <img class="card-img-top rounded-circle" src="http://placehold.it/300x200" alt="">
+\        <div class="card mb-5 text-center">
+          <img class="card-img-top rounded-circle" src="../../../assets/img/add-user.png" alt="">
           <div class="card-body text">
             <h4 class="card-title">{{familyMember.firstName}}</h4>
           </div>
           <div class="card-footer">
-            <a routerLink="/home" class="btn btn-primary">View Family</a>
+            <a *ngIf="familyMember.id == null" class="btn btn-primary" routerLink="add">Add User</a>
+            <a *ngIf="familyMember.id != null" class="btn btn-primary" [routerLink]="['edit', familyMember.id]">View</a>
           </div>
         </div>
-      </div>
     </div>
-  <!--</div>-->
+  </div>
 
 </div>
